@@ -19,7 +19,7 @@
         <style>
         </style>
     </head>
-    <body class="levelBG">
+    <body class="levelBG" onbeforeunload="saveURL()">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://gdbrowser.com/global.js?v=2"></script>
         <div id="everything" style="overflow: auto;">
@@ -73,12 +73,14 @@
 
 	<div id="searchBox" class="supercenter dragscroll">
 		<div style="height: 4.5%;"></div>
+        <div class="searchresult levelresult" style="position: relative; overflow: hidden;">
+        </div>
 	</div>
 	
 	<div class="epicbox supercenter gs" style="width: 120vh; height: 80%; pointer-events: none;"></div>
 
 	<div class="center" style="position: absolute; top: 8%; left: 0%; right: 0%;">
-		<h1 id="header"></h1>
+		<h1 id="header">Map Packs</h1>
 	</div>
 
 	<div style="text-align: right; position: absolute; top: 1%; right: 2%;">
