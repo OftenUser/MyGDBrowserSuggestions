@@ -73,7 +73,23 @@
 
 	<div id="searchBox" class="supercenter dragscroll">
 		<div style="height: 4.5%;"></div>
-        <div class="searchresult levelresult" style="position: relative; overflow: hidden;">
+        <div class="searchResult levelresult" style="position: relative; overflow: hidden;">
+            <div class="diffRow">
+                <div class="difficultyBox" featured="false" epictype="0" style="--diffMultiplier: 3;">
+                    <img class="help" id="dFace" title="Easy" src="https://gdbrowser.com/assets/difficulties/easy.png">
+                </div>
+                <h3 title style="font-size: 3vh;">Easy</h3>
+            </div>
+            <div class="mainRow">
+                <h1 class="lessSpaced pre" title="Alpha Pack" style="width: fit-content; padding-right: 1%; color: rgb(0, 255, 125); margin-left: 150px; margin-top: 25px;">Alpha Pack</h1>
+                <h3 class="lessSpaced" style="width: fit-content; margin-left: 210px; margin-top: 20px;">
+				    <span class="help" title="Stars" style="font-size: 40px;">2 <img class="valign rightSpace" src="https://gdbrowser.com/assets/star.png" width="20%" height="20%"></span>
+				    <span class="help" title="Secret Coins" style="font-size: 40px;">1 <img class="valign rightSpace" src="https://gdbrowser.com/assets/coin.png" width="20%" height="20%"></span>
+				</h3>
+            </div>
+            <div class="extraRow">
+                <a title="View Alpha Pack" href="https://gdbrowser.com"><img style="margin-bottom: 4.5%; height: 7vh;" class="valign gdButton" src="https://gdbrowser.com/assets/view.png"></a>
+            </div>
         </div>
 	</div>
 	
@@ -87,7 +103,7 @@
 		<h2 class="smaller" style="font-size: 4.5vh;" id="pagenum"></h2>
 	</div>
 
-	<div title="Jump To Page" style="text-align: right; position:absolute; top: 7.5%; right: 2%; height: 12%;">
+	<div title="Jump To Page" style="text-align: right; position: absolute; top: 7.5%; right: 2%; height: 12%;">
 		<img src="https://gdbrowser.com/assets/magnify.png" height="60%" class="gdButton" style="margin-top: 5%;" onclick="$('#pageDiv').show(); $('#pageSelect').focus().select();">
 	</div>
 
