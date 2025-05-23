@@ -73,7 +73,7 @@
 
 	<div id="searchBox" class="supercenter dragscroll">
 		<div style="height: 4.5%;"></div>
-        <div class="searchResult levelresult" style="position: relative; overflow: hidden;">
+        <!-- <div class="searchResult levelresult" style="position: relative; overflow: hidden;">
             <div class="diffRow">
                 <div class="difficultyBox" featured="false" epictype="0" style="--diffMultiplier: 3;">
                     <img class="help" id="dFace" title="Easy" src="https://gdbrowser.com/assets/difficulties/easy.png">
@@ -90,7 +90,7 @@
             <div class="extraRow">
                 <a title="View Alpha Pack" href="https://gdbrowser.com"><img style="margin-bottom: 4.5%; height: 7vh;" class="valign gdButton" src="https://gdbrowser.com/assets/view.png"></a>
             </div>
-        </div>
+        </div> -->
 	</div>
 	
 	<div class="epicbox supercenter gs" style="width: 120vh; height: 80%; pointer-events: none;"></div>
@@ -149,7 +149,32 @@
 
 </div>
         <script>
-            
+            fetch('https://gdbrowser.com/api/mappacks').then(res => res.json()).then(packs => {
+				$('#loading').hide();
+				packs.forEach(x => {
+					const difficultyName = x.difficulty.charAt(0).toUpperCase() + x.difficulty.slice(1);
+					$('#searchBox').append(`
+						<div class="searchResult levelresult" style="position: relative; overflow: hidden;">
+							<div class="diffRow">
+								<div class="difficultyBox" featured="false" epictype="0" style="--diffMultiplier: 3;">
+									<img class="help" id="dFace" src="https://gdbrowser.com/assets/difficulties/${x.difficulty}.png" alt="${difficultyName}" title="${difficultyName}">
+								</div>
+								<h3 title="${difficultyName}" style="font-size: 3vh;">${difficultyName}</h3>
+							</div>
+							<div class="mainRow">
+								<h1 class="lessSpaced pre" title="${x.name}" style="width: fit-content; padding-right: 1%; color: rgb(${x.textColor}); margin-top: 25px; text-align: center; width: 100%;">${x.name}</h1>
+								<h3 class="lessSpaced" style="width: fit-content; margin-left: 210px; margin-top: 20px;">
+									<span class="help" title="${x.stars} Stars" style="font-size: 40px;">${x.stars} <img class="valign rightSpace" src="https://gdbrowser.com/assets/star.png" width="20%" height="20%" alt="Stars"></span>
+									<span class="help" title="${x.coins} Coins" style="font-size: 40px;">${x.coins} <img class="valign rightSpace" src="https://gdbrowser.com/assets/coin.png" width="20%" height="20%" alt="Secret Coins"></span>
+								</h3>
+							</div>
+							<div class="extraRow">
+								<a title="View ${x.name}" href="https://gdbrowser.com/search/${x.levels[0]},${x.levels[1]},${x.levels[2]}?list&header=${x.name.replace(" ", "%20")}"><img style="margin-bottom: 4.5%; height: 7vh;" class="valign gdButton" src="https://gdbrowser.com/assets/view.png"></a>
+							</div>
+						</div>
+					`)
+				});
+			});
         </script>
     </body>
 </html>
