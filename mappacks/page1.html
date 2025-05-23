@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Map Packs</title>
+        <link rel="icon" href="https://gdbrowser.com/assets/folder.png">
+        <link rel="stylesheet" type="text/css" href="https://gdbrowser.com/assets/css/browser.css?v=5ab">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135255146-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            
+            gtag('js', new Date());
+            gtag('config', 'UA-135255146-3');
+        </script>
+        <style>
+        </style>
+    </head>
+    <body class="levelBG">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://gdbrowser.com/global.js?v=2"></script>
+        <div id="everything" style="overflow: auto;">
+
+	<div class="popup" id="pageDiv">
+		<div class="brownbox bounce center supercenter" style="width: 60vh; height: 34%;">
+			<h2 class="smaller center" style="font-size: 5.5vh; margin-top: 1%;">Jump To Page</h2>
+			<input type="number" id="pageSelect" placeholder="1"><br>
+			<img src="https://gdbrowser.com/assets/ok.png" height="20%" id="pageJump" class="gdButton center closeWindow">
+			<img class="closeWindow gdButton" src="https://gdbrowser.com/assets/close.png" height="25%" style="position: absolute; top: -13.5%; left: -6vh;">
+
+			<div class="supercenter" style="left: 25%; top: 43%; height: 10%;">
+				<img class="gdButton" src="https://gdbrowser.com/assets/whitearrow-left.png" height="160%" onclick="$('#pageSelect').val(parseInt($('#pageSelect').val() || 0) - 1); $('#pageSelect').trigger('input');">
+			</div>
+		
+			<div class="supercenter" style="left: 75%; top: 43%; height: 10%;">
+				<img class="gdButton" src="https://gdbrowser.com/assets/whitearrow-right.png" height="160%" onclick="$('#pageSelect').val(parseInt($('#pageSelect').val() || 0) + 1); $('#pageSelect').trigger('input');">
+			</div>
+		</div>
+	</div>
+
+	<div class="popup" id="purgeDiv">
+		<div class="fancybox bounce center supercenter" style="width: 35%; height: 28%;">
+			<h2 class="smaller center" style="font-size: 5.5vh;">Delete All</h2>
+			<p class="bigger center" style="line-height: 5vh; margin-top: 1.5vh;">
+				Delete all saved online levels?<br><cy>Levels will be cleared from your browser.</cy>
+			</p>
+			<img src="https://gdbrowser.com/assets/btn-cancel-green.png" height=25%; class="gdButton center closeWindow">
+			<img src="https://gdbrowser.com/assets/btn-delete.png" height="25%" id="purgeSaved" class="gdButton center sideSpaceB">
+		</div>
+	</div>
+
+	<div class="popup" id="shuffleDiv">
+		<div class="fancybox bounce center supercenter">
+			<h2 class="smaller center" style="font-size: 5.5vh;">Random Level</h2>
+			<p class="bigger center" id="levelInfo" style="line-height: 5vh; margin-top: 1.5vh;">
+				A random level cannot be picked with your current <cy>search filters!</cy>
+				This is because there is no way to tell how many results were found, due to the GD servers inaccurately saying there's <cg>9,999</cg>.
+			</p>
+			<img src="https://gdbrowser.com/assets/ok.png" width=20%; class="gdButton center closeWindow">
+		</div>
+	</div>
+
+	<div style="position: absolute; bottom: 0%; left: 0%; width: 100%;">
+		<img class="cornerPiece" src="https://gdbrowser.com/assets/corner.png" width="7%">
+	</div>
+
+	<div style="position: absolute; bottom: 0%; right: 0%; width: 100%; text-align: right;">
+		<img class="cornerPiece" src="https://gdbrowser.com/assets/corner.png" width="7%" style="transform: scaleX(-1);">
+	</div>
+
+	<div id="searchBox" class="supercenter dragscroll">
+		<div style="height: 4.5%;"></div>
+	</div>
+	
+	<div class="epicbox supercenter gs" style="width: 120vh; height: 80%; pointer-events: none;"></div>
+
+	<div class="center" style="position: absolute; top: 8%; left: 0%; right: 0%;">
+		<h1 id="header"></h1>
+	</div>
+
+	<div style="text-align: right; position: absolute; top: 1%; right: 2%;">
+		<h2 class="smaller" style="font-size: 4.5vh;" id="pagenum"></h2>
+	</div>
+
+	<div title="Jump To Page" style="text-align: right; position:absolute; top: 7.5%; right: 2%; height: 12%;">
+		<img src="https://gdbrowser.com/assets/magnify.png" height="60%" class="gdButton" style="margin-top: 5%;" onclick="$('#pageDiv').show(); $('#pageSelect').focus().select();">
+	</div>
+
+	<div id="shuffle" title="Random Level" style="display: none; text-align: right; position: absolute; top: 7.5%; right: 6.5%; height: 12%;">
+		<img src="https://gdbrowser.com/assets/random.png" height="60%" class="gdButton" style="margin-top: 5%;">
+	</div>
+
+	<div id="lastPage" title="Last Page" style="display: none; text-align: right; position: absolute; top: 7.5%; right: 11%; height: 11%;">
+		<img src="https://gdbrowser.com/assets/double-arrow.png" height="60%" class="gdButton" style="margin-top: 5%;">
+	</div>
+
+	<div style="position: absolute; top: 2%; left: 1.5%; width: 10%; height: 25%; pointer-events: none;">
+		<img class="gdButton yesClick" id="backButton" src="https://gdbrowser.com/assets/back.png" height="30%" onclick="backButton()">
+	</div>
+
+	<div id="purge" style="position: absolute; bottom: 1%; right: -3%; width: 10%; display: none;">
+		<img class="gdButton" src="https://gdbrowser.com/assets/delete.png" width="60%" onclick="$('#purgeDiv').show();">
+	</div>
+
+	<div style="position: absolute; bottom: 2%; right: 1%; text-align: right; width: 15%;">
+		<img class="gdButton" src="https://gdbrowser.com/assets/refresh.png" width="40%" id="refreshPage">
+	</div>
+
+	<div style="position:absolute; bottom: 2%; right: 8.5%; text-align: right; width: 15%; display: none;" id="gdWorld">
+		<a title="Geometry Dash World" href="https://gdbrowser.com/search/*?type=gdw"><img class="gdButton" src="https://gdbrowser.com/assets/gdw_circle.png" width="40%"></a>
+	</div>
+
+	<div style="position: absolute; bottom: 2%; right: 8.5%; text-align: right; width: 15%; display: none;" id="normalGD">
+		<a title="Back to Geometry Dash" href="https://gdbrowser.com/search/*?type=featured"><img class="gdButton" src="https://gdbrowser.com/assets/gd_circle.png" width="40%"></a>
+	</div>
+
+	<div style="position: absolute; left: 7%; top: 45%; height: 10%;">
+		<img class="gdButton" id="pageDown" style="display: none;" src="https://gdbrowser.com/assets/arrow-left.png" height="90%">
+	</div>
+
+	<div style="position: absolute; right: 7%; top: 45%; height: 10%;">
+		<img class="gdButton" id="pageUp" style="display: none;" src="https://gdbrowser.com/assets/arrow-right.png" height="90%">
+	</div>
+
+	<div class="supercenter" id="loading" style="height: 10%; top: 47%; display: none;">
+		<img class="spin noSelect" src="https://gdbrowser.com/assets/loading.png" height="105%">
+	</div>
+
+</div>
+        <script>
+            
+        </script>
+    </body>
+</html>
