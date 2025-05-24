@@ -73,7 +73,7 @@
 
 	<div id="searchBox" class="supercenter dragscroll">
 		<div style="height: 4.5%;"></div>
-        <div class="searchResult levelresult" style="position: relative; overflow: hidden;">
+        <!-- <div class="searchResult levelresult" style="position: relative; overflow: hidden;">
             <div class="diffRow">
                 <div class="difficultyBox" featured="false" epictype="0" style="--diffMultiplier: 3;">
                     <img class="help" id="dFace" title="Easy" src="https://gdbrowser.com/assets/difficulties/easy.png">
@@ -93,7 +93,7 @@
 			<div class="idRow" style="right: 4.5%;">
 				<p class="commentDate" title="Level IDs" style="margin-bottom: -12%; margin-right: -8%; font-size: 2.2vh;">4454123, 11280109, 6508283</p>
 			</div>
-        </div>
+        </div> -->
 	</div>
 	
 	<div class="epicbox supercenter gs" style="width: 120vh; height: 80%; pointer-events: none;"></div>
@@ -173,6 +173,9 @@
 							</div>
 							<div class="extraRow">
 								<a title="View ${x.name}" href="https://gdbrowser.com/search/${x.levels[0]},${x.levels[1]},${x.levels[2]}?list&header=${x.name.replace(" ", "%20")}"><img style="margin-bottom: 4.5%; height: 7vh;" class="valign gdButton" src="https://gdbrowser.com/assets/view.png"></a>
+							</div>
+							<div class="idRow" style="right: 4.5%;">
+								<p class="help commentDate" title="Level IDs" style="margin-bottom: 0%; margin-right: -8%; font-size: 2.2vh;">${x.levels[0]}, ${x.levels[1]}, ${x.levels[2]}</p>
 							</div>
 						</div>
 					`)
